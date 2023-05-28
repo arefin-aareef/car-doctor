@@ -32,14 +32,14 @@ const AuthProvider = ({children}) => {
 
     useEffect(() => {
         const unsubscribe =  onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser && currentUser.email);
+            setUser(currentUser);
             console.log('current user', currentUser);
             setLoading(false)
             if(currentUser && currentUser.email){
                 const loggedUser = {
                     email: currentUser.email
                   }
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://car-doctor-liard.vercel.app/jwt', {
             method: 'POST',
             headers: {
               'content-type': 'application/json'
